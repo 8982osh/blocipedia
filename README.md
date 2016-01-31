@@ -1,4 +1,4 @@
-##Blocipedia
+##Blocipedia-Wiki collaboration tool to teach fundamentals of web development
 == README
 
 This README would normally document whatever steps are necessary to get the
