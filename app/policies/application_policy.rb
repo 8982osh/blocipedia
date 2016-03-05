@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    user.present?
   end
 
   def new?
@@ -23,8 +23,8 @@ class ApplicationPolicy
   end
 
   def update?
-    #allow any user to edit public wiki
-    user.present?
+    #allow record owner or admin
+    user.present? && (record.user == user || user.admin?)
   end
 
   def edit?
@@ -32,11 +32,12 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    #limit to owner or admin
+    update?
   end
 
   def scope
-    Pundit.policy_scope!(user, record.class)
+    record.class
   end
 
   class Scope
