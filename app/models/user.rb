@@ -3,9 +3,20 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   has_many :wikis
+  
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable        
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable   
+
+  def admin?
+  	role == 'admin'
+  end  
+
+  def moderator?
+    role == 'premium'
+  end
+
+  
 end
 
 

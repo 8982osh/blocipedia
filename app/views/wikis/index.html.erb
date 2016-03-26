@@ -1,18 +1,13 @@
-<h1>Wiki List</h1>
+<h1>All Wikis</h1>
 
-<div class="row">
-  <div class="col-md-8">
-    <% @wikis.each do |wiki| %>
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <%= link_to wiki.title, wiki %>
-          </h4>
-          <small>
-            <%= wiki.body %>
-          </small>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+<% @wikis.each do |wiki| %>
+  <p><%= link_to wiki.title, wiki %></p>
+   <div class="media">
+     <div class="media-body">
+       <h4 class="media-heading">
+         <%= link_to wiki.title, wiki %>
+       </h4>
+     </div>
+   </div>
+ <% end %>
+    
