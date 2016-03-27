@@ -24,7 +24,7 @@ class ApplicationPolicy
 
   def update?
     #allow record owner or admin
-    user.present? && (record.user == user || user.admin?)
+    user.present? #&& (record.user == user || user.admin?)
   end
 
   def edit?
