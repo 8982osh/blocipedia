@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
     role == 'premium'
   end
 
-  
+  def premium_upgrade
+    #self.update_attribute(:role, "premium")  
+  end
 end
 
 

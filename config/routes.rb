@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  #get 'wikis/index'
+   
+  #get 'charges/index'
 
-  #get 'wikis/show'
+  #get 'charges/show'
 
-  #get 'wikis/new'
+  #get 'charges/new'
 
-  #get 'wikis/edit'
+  #get 'charges/edit'
+
+  resources :charges, only: [:new, :create]
 
   resources :wikis
 
