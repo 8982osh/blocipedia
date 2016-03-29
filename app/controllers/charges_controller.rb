@@ -17,7 +17,7 @@ class ChargesController < ApplicationController
    )
    #if current_user.update(premium :true)
    flash[:notice] = "Thanks for all the money, #{current_user.email}! Membership upgraded to Premium."
-   redirect_to user_path(current_user) # or wherever
+   redirect_to index_path(current_user) # or wherever
    #redirect_to edit_user_registration_path to upgrade role
    # Stripe will send back CardErrors, with friendly messages when something goes wrong.
    # This `rescue block` catches and displays those errors.
