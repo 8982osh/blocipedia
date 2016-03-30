@@ -35,7 +35,7 @@ class ApplicationPolicy
 
   def destroy?
     #limit to owner or admin
-    update?
+    user.present? && user.admin?
     #@user.admin?
   end
 

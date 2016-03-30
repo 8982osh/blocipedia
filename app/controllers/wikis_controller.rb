@@ -1,4 +1,6 @@
 class WikisController < ApplicationController
+
+  #before_action :authenticate_user!
   def index
   	@wikis = Wiki.all
     authorize @wikis
@@ -52,5 +54,11 @@ class WikisController < ApplicationController
   	  flash[:error] = "Error when deleting wiki. Try again."
   	  render :show
     end
+  end
+
+  def downgrade
+    current_user.downgrade
+    flash[:notice] = "You're account is now at Standard"
+    redirect_to index_path
   end
 end
