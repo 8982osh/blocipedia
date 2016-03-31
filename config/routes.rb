@@ -4,15 +4,6 @@ Rails.application.routes.draw do
   
   get 'downgrade' =>'users#downgrade'
 
-  #get 'charges/index'
-
-  #get 'charges/show'
-
-  #get 'charges/new'
-
-  #get 'charges/edit'
-
-  
 
   resources :charges, only: [:new, :create]
 

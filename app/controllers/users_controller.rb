@@ -5,3 +5,5 @@ class UsersController < ApplicationController
   	current_user.update_attribute(:role, 'standard')
   end
 end
+
+

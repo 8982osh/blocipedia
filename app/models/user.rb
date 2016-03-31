@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :wikis
   
-  #validates :role
+  
   #after_initialize :set_role
 
   devise :database_authenticatable, :registerable,
