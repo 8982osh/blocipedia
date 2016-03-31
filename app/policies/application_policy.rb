@@ -8,10 +8,12 @@ class ApplicationPolicy
 
   def index?
     false
+    @user.admin?
   end
 
   def show?
     scope.where(id: record.id).exists?
+    #@user.admin? || @user == @user
   end
 
   def create?
@@ -33,7 +35,8 @@ class ApplicationPolicy
 
   def destroy?
     #limit to owner or admin
-    update?
+    user.present? && user.admin?
+    #@user.admin?
   end
 
   def scope
@@ -53,3 +56,5 @@ class ApplicationPolicy
     end
   end
 end
+
+

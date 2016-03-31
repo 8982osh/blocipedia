@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  #get 'wikis/index'
+   
+  #get 'users/downgrade'
+  
+  get 'downgrade' =>'users#downgrade'
 
-  #get 'wikis/show'
 
-  #get 'wikis/new'
-
-  #get 'wikis/edit'
+  resources :charges, only: [:new, :create]
 
   resources :wikis
 
