@@ -1,25 +1,16 @@
-<h1>Edit Wiki</h1>
+<h1>Edit Wiki Collaborators</h1>
+  <%= render partial: 'form', locals: { wiki: @wiki } %>
 
- <div class="row">
-   <div class="col-md-4">
-     <p>Guidelines for wikis</p>
-     <ul>
-       <li>Do not duplicate Wikis already created.</li>
-     </ul>
-   </div>
-   <div class="col-md-8">
-     <%= form_for @wiki do |f| %>
-       <div class="form-group">
-         <%= f.label :title %>
-         <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
-       </div>
-       <div class="form-group">
-         <%= f.label :body %>
-         <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
-       </div>
-       <div class="form-group">
-         <%= f.submit "Save", class: 'btn btn-success' %>
-       </div>
-     <% end %>
-   </div>
- </div>
+  <% if current_user.role == 'premium' %>
+  
+  <% @users.each do |user| %>
+    <%= user.name %>  
+      <div class="form-group">  
+      <% if @wiki.users.include? user %>
+        <%= link_to "Delete Collaborator", wiki_collaborator_path(@wiki, @wiki.collaborator_for(user)), method: :delete, class: 'btn btn-danger' %>
+        <% else %>
+        <%= link_to "Add Collaborator", wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
